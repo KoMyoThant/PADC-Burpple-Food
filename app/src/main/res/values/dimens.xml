@@ -17,7 +17,7 @@
     <dimen name="margin_medium_n">-8dp</dimen>
     <dimen name="margin_card_medium_2_n">-12dp</dimen>
     <dimen name="margin_medium_2_n">-16dp</dimen>
-    <dimen name="margin_medium_3_n">-18dp</dimen>
+    <dimen name="margin_medium_3_n">-20dp</dimen>
     <dimen name="margin_large_n">-24dp</dimen>
     <dimen name="margin_xlarge_n">-32dp</dimen>
 

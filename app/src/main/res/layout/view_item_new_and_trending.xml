@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    card_view:elevation="@dimen/margin_small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_large"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/margin_medium_2"
+        android:paddingTop="@dimen/margin_medium_3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:text="Newly Opened"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium_2">
+
+            <ImageView
+                android:id="@+id/iv_new_food_1"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/img_new_food_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_new_food_label_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@id/iv_new_food_1"
+                android:text="Sushi Kimura" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium_2">
+
+            <ImageView
+                android:id="@+id/iv_new_food_2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/img_new_food_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_new_food_label_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@id/iv_new_food_2"
+                android:text="Sushi Kimura" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium_2">
+
+            <ImageView
+                android:id="@+id/iv_new_food_3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/img_new_food_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_new_food_label_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@id/iv_new_food_3"
+                android:text="Sushi Kimura" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/margin_medium_2_n"
+            android:background="@color/secondary_text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
+            android:text="EXPLORE" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
