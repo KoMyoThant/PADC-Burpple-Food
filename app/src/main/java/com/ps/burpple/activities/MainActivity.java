@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ps.burpple.R;
 import com.ps.burpple.adapters.BurppleGuideRecyclerAdapter;
@@ -15,11 +16,12 @@ import com.ps.burpple.adapters.FoodImagesPagerAdapter;
 import com.ps.burpple.adapters.PromotionsRecyclerAdapter;
 import com.ps.burpple.components.EmptyViewPod;
 import com.ps.burpple.components.SmartRecyclerView;
+import com.ps.burpple.delegates.PromotionItemDelegate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements PromotionItemDelegate{
 
     @BindView(R.id.vp_food_images)
     ViewPager vpFoodImages;
@@ -77,7 +79,7 @@ public class MainActivity extends BaseActivity {
         vpEmptyPromotion.setEmptyData("Ha Ha No data");
         rvPromotionFoods.setEmptyView(vpEmptyPromotion);
         rvPromotionFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
-        PromotionsRecyclerAdapter promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext());
+        PromotionsRecyclerAdapter promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext(),this);
         rvPromotionFoods.setAdapter(promotionsRecyclerAdapter);
 
         vpEmptyGuide.setEmptyData("Ha Ha No data");
@@ -87,4 +89,8 @@ public class MainActivity extends BaseActivity {
         rvBurppleGuideFoods.setAdapter(burppleGuideRecyclerAdapter);
     }
 
+    @Override
+    public void onTapPromotion() {
+        Toast.makeText(getApplicationContext(),"Promotion Tap",Toast.LENGTH_SHORT).show();
+    }
 }

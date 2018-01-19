@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ps.burpple.R;
+import com.ps.burpple.delegates.PromotionItemDelegate;
 import com.ps.burpple.viewholders.PromotionItemViewHolder;
 
 /**
@@ -17,16 +18,19 @@ public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter {
 
     private LayoutInflater mLayoutInflater;
     private Context mContext;
+    private PromotionItemDelegate mPromotionItemDelegate;
 
-    public PromotionsRecyclerAdapter(Context context){
+    public PromotionsRecyclerAdapter(Context context, PromotionItemDelegate promotionItemDelegate) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
+        mPromotionItemDelegate = promotionItemDelegate;
     }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mLayoutInflater.inflate(R.layout.view_item_promotion,parent,false);
+        View itemView = mLayoutInflater.inflate(R.layout.view_item_promotion, parent, false);
 
-        return new PromotionItemViewHolder(itemView);
+        return new PromotionItemViewHolder(itemView, mPromotionItemDelegate);
     }
 
     @Override
@@ -36,6 +40,6 @@ public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 7;
     }
 }
