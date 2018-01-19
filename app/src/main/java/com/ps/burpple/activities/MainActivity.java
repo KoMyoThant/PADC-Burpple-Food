@@ -3,9 +3,9 @@ package com.ps.burpple.activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +16,7 @@ import com.ps.burpple.adapters.FoodImagesPagerAdapter;
 import com.ps.burpple.adapters.PromotionsRecyclerAdapter;
 import com.ps.burpple.components.EmptyViewPod;
 import com.ps.burpple.components.SmartRecyclerView;
+import com.ps.burpple.components.SmartScrollListener;
 import com.ps.burpple.delegates.PromotionItemDelegate;
 
 import butterknife.BindView;
@@ -39,6 +40,8 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
     EmptyViewPod vpEmptyGuide;
 
     private TextView mTextMessage;
+
+    private SmartScrollListener smartScrollListener;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -81,6 +84,16 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
         rvPromotionFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
         PromotionsRecyclerAdapter promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext(),this);
         rvPromotionFoods.setAdapter(promotionsRecyclerAdapter);
+
+        smartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
+            @Override
+            public void onListEndReach() {
+                Snackbar.make(rvPromotionFoods, "This is all the data for NOW.", Snackbar.LENGTH_LONG).show();
+
+            }
+        });
+
+        rvBurppleGuideFoods.addOnScrollListener(smartScrollListener);
 
         vpEmptyGuide.setEmptyData("Ha Ha No data");
         rvBurppleGuideFoods.setEmptyView(vpEmptyGuide);

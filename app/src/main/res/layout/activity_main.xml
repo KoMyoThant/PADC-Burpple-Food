@@ -87,8 +87,7 @@
                 <com.ps.burpple.components.SmartRecyclerView
                     android:id="@+id/rv_promotions_foods"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_medium">
+                    android:layout_height="match_parent">
 
                 </com.ps.burpple.components.SmartRecyclerView>
 
@@ -96,15 +95,14 @@
                     android:id="@+id/vp_empty_promotion"
                     layout="@layout/view_pod_empty"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
                 <RelativeLayout
                     android:id="@+id/rl_burpple_guides"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_medium_2"
-                    android:layout_marginRight="@dimen/margin_medium_2"
-                    android:layout_marginTop="@dimen/margin_xxlarge">
+                    android:layout_marginRight="@dimen/margin_medium_2">
 
                     <TextView
                         android:id="@+id/tv_latest_burpple_guides"
@@ -138,8 +136,7 @@
                 <com.ps.burpple.components.SmartRecyclerView
                     android:id="@+id/rv_burpple_guides_foods"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:layout_height="160dp"
                     android:layout_marginTop="@dimen/margin_large">
 
                 </com.ps.burpple.components.SmartRecyclerView>
@@ -148,15 +145,14 @@
                     android:id="@+id/vp_empty_guide"
                     layout="@layout/view_pod_empty"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"/>
 
                 <RelativeLayout
                     android:id="@+id/rl_new_and_trending"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_medium_2"
-                    android:layout_marginRight="@dimen/margin_medium_2"
-                    android:layout_marginTop="@dimen/margin_xxlarge">
+                    android:layout_marginRight="@dimen/margin_medium_2">
 
                     <TextView
                         android:id="@+id/tv_latest_new_and_trending"
