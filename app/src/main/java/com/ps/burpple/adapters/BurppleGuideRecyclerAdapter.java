@@ -36,6 +36,6 @@ public class BurppleGuideRecyclerAdapter extends BaseRecyclerAdapter {
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 0;
     }
 }

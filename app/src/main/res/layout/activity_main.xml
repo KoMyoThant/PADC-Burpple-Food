@@ -84,12 +84,19 @@
                         android:textColor="@color/primary" />
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.ps.burpple.components.SmartRecyclerView
                     android:id="@+id/rv_promotions_foods"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium">
 
-                </android.support.v7.widget.RecyclerView>
+                </com.ps.burpple.components.SmartRecyclerView>
+
+                <include
+                    android:id="@+id/vp_empty_promotion"
+                    layout="@layout/view_pod_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
                 <RelativeLayout
                     android:id="@+id/rl_burpple_guides"
@@ -128,13 +135,20 @@
                         android:textColor="@color/primary" />
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
+                <com.ps.burpple.components.SmartRecyclerView
                     android:id="@+id/rv_burpple_guides_foods"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium"
                     android:layout_marginTop="@dimen/margin_large">
 
-                </android.support.v7.widget.RecyclerView>
+                </com.ps.burpple.components.SmartRecyclerView>
+
+                <include
+                    android:id="@+id/vp_empty_guide"
+                    layout="@layout/view_pod_empty"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
 
                 <RelativeLayout
                     android:id="@+id/rl_new_and_trending"
@@ -177,17 +191,25 @@
                     android:id="@+id/ll_new_and_trending_foods"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
                     android:layout_marginLeft="@dimen/margin_medium_2"
                     android:layout_marginRight="@dimen/margin_medium_2"
                     android:layout_marginTop="@dimen/margin_large"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="80dp"
                     android:weightSum="2">
 
                     <include
                         layout="@layout/view_item_new_and_trending"
-                        android:layout_width="250dp"
-                        android:layout_height="300dp" />
+                        android:layout_width="0dp"
+                        android:layout_height="300dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1" />
+
+                    <include
+                        layout="@layout/view_item_new_and_trending"
+                        android:layout_width="0dp"
+                        android:layout_height="300dp"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <View
@@ -249,8 +271,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/secondary_text"
-                    android:layout_marginBottom="60dp"/>
+                    android:layout_marginBottom="60dp"
+                    android:background="@color/secondary_text" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

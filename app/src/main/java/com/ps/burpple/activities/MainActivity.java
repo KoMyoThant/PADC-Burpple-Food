@@ -6,7 +6,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -14,6 +13,8 @@ import com.ps.burpple.R;
 import com.ps.burpple.adapters.BurppleGuideRecyclerAdapter;
 import com.ps.burpple.adapters.FoodImagesPagerAdapter;
 import com.ps.burpple.adapters.PromotionsRecyclerAdapter;
+import com.ps.burpple.components.EmptyViewPod;
+import com.ps.burpple.components.SmartRecyclerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,10 +25,16 @@ public class MainActivity extends BaseActivity {
     ViewPager vpFoodImages;
 
     @BindView(R.id.rv_promotions_foods)
-    RecyclerView rvPromotionFoods;
+    SmartRecyclerView rvPromotionFoods;
 
     @BindView(R.id.rv_burpple_guides_foods)
-    RecyclerView rvBurppleGuideFoods;
+    SmartRecyclerView rvBurppleGuideFoods;
+
+    @BindView(R.id.vp_empty_promotion)
+    EmptyViewPod vpEmptyPromotion;
+
+    @BindView(R.id.vp_empty_guide)
+    EmptyViewPod vpEmptyGuide;
 
     private TextView mTextMessage;
 
@@ -67,10 +74,14 @@ public class MainActivity extends BaseActivity {
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        vpEmptyPromotion.setEmptyData("Ha Ha No data");
+        rvPromotionFoods.setEmptyView(vpEmptyPromotion);
         rvPromotionFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
         PromotionsRecyclerAdapter promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext());
         rvPromotionFoods.setAdapter(promotionsRecyclerAdapter);
 
+        vpEmptyGuide.setEmptyData("Ha Ha No data");
+        rvBurppleGuideFoods.setEmptyView(vpEmptyGuide);
         rvBurppleGuideFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
         BurppleGuideRecyclerAdapter burppleGuideRecyclerAdapter = new BurppleGuideRecyclerAdapter(getApplicationContext());
         rvBurppleGuideFoods.setAdapter(burppleGuideRecyclerAdapter);

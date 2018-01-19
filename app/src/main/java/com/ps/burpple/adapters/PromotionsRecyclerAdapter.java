@@ -36,6 +36,6 @@ public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter {
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 0;
     }
 }
