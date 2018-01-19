@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ps.burpple.R;
+import com.ps.burpple.data.vo.PromotionVO;
 import com.ps.burpple.delegates.PromotionItemDelegate;
 import com.ps.burpple.viewholders.PromotionItemViewHolder;
 
@@ -14,32 +15,24 @@ import com.ps.burpple.viewholders.PromotionItemViewHolder;
  * Created by pyaesone on 1/6/18.
  */
 
-public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter {
+public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter<PromotionItemViewHolder,PromotionVO> {
 
-    private LayoutInflater mLayoutInflater;
-    private Context mContext;
     private PromotionItemDelegate mPromotionItemDelegate;
 
-    public PromotionsRecyclerAdapter(Context context, PromotionItemDelegate promotionItemDelegate) {
-        mContext = context;
-        mLayoutInflater = LayoutInflater.from(mContext);
+    public PromotionsRecyclerAdapter(Context context,PromotionItemDelegate promotionItemDelegate) {
+        super(context);
         mPromotionItemDelegate = promotionItemDelegate;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PromotionItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mLayoutInflater.inflate(R.layout.view_item_promotion, parent, false);
 
         return new PromotionItemViewHolder(itemView, mPromotionItemDelegate);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(PromotionItemViewHolder holder, int position) {
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return 7;
     }
 }

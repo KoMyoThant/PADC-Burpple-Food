@@ -19,8 +19,7 @@ public class BurppleGuideRecyclerAdapter extends BaseRecyclerAdapter {
     private Context mContext;
 
     public BurppleGuideRecyclerAdapter(Context context){
-        mContext = context;
-        mLayoutInflater = LayoutInflater.from(mContext);
+        super(context);
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,10 +31,5 @@ public class BurppleGuideRecyclerAdapter extends BaseRecyclerAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
     }
 }
