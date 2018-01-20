@@ -18,11 +18,16 @@ import com.ps.burpple.components.EmptyViewPod;
 import com.ps.burpple.components.SmartRecyclerView;
 import com.ps.burpple.components.SmartScrollListener;
 import com.ps.burpple.delegates.PromotionItemDelegate;
+import com.ps.burpple.events.RestAPIEvents;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements PromotionItemDelegate{
+public class MainActivity extends BaseActivity implements PromotionItemDelegate {
 
     @BindView(R.id.vp_food_images)
     ViewPager vpFoodImages;
@@ -42,6 +47,8 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
     private TextView mTextMessage;
 
     private SmartScrollListener smartScrollListener;
+
+    private PromotionsRecyclerAdapter promotionsRecyclerAdapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,10 +71,22 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
     };
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -81,8 +100,8 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
 
         vpEmptyPromotion.setEmptyData("Ha Ha No data");
         rvPromotionFoods.setEmptyView(vpEmptyPromotion);
-        rvPromotionFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
-        PromotionsRecyclerAdapter promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext(),this);
+        rvPromotionFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        promotionsRecyclerAdapter = new PromotionsRecyclerAdapter(getApplicationContext(), this);
         rvPromotionFoods.setAdapter(promotionsRecyclerAdapter);
 
         smartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
@@ -97,13 +116,23 @@ public class MainActivity extends BaseActivity implements PromotionItemDelegate{
 
         vpEmptyGuide.setEmptyData("Ha Ha No data");
         rvBurppleGuideFoods.setEmptyView(vpEmptyGuide);
-        rvBurppleGuideFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        rvBurppleGuideFoods.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
         BurppleGuideRecyclerAdapter burppleGuideRecyclerAdapter = new BurppleGuideRecyclerAdapter(getApplicationContext());
         rvBurppleGuideFoods.setAdapter(burppleGuideRecyclerAdapter);
     }
 
     @Override
     public void onTapPromotion() {
-        Toast.makeText(getApplicationContext(),"Promotion Tap",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Promotion Tap", Toast.LENGTH_SHORT).show();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPromotionDataLoaded(RestAPIEvents.PromotionDataLoadedEvent event) {
+        promotionsRecyclerAdapter.appendNewData(event.getLoadedPromotions());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onErrorInvokingAPI(RestAPIEvents.ErrorInvokingAPIEvent errorEvent) {
+        Snackbar.make(rvPromotionFoods, errorEvent.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
     }
 }

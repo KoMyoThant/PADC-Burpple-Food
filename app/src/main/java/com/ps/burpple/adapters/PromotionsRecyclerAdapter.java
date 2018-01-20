@@ -30,9 +30,4 @@ public class PromotionsRecyclerAdapter extends BaseRecyclerAdapter<PromotionItem
 
         return new PromotionItemViewHolder(itemView, mPromotionItemDelegate);
     }
-
-    @Override
-    public void onBindViewHolder(PromotionItemViewHolder holder, int position) {
-
-    }
 }
